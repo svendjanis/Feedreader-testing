@@ -27,6 +27,7 @@ $(function() {
         });
 
 
+        /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
@@ -113,24 +114,24 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
 
     describe('New Feed Selection', function () {
-    //     /* TODO: Write a test that ensures when a new feed is loaded
-    //    * by the loadFeed function that the content actually changes.
-    //    * Remember, loadFeed() is asynchronous.
-    //    */
+        let firstFeed;
+        let secondFeed;
         beforeEach(done => {
             loadFeed(1, () => {
-                window.firstFeed = document.querySelector('.entry-link').innerHTML;
+                firstFeed = document.querySelector('.entry-link').innerHTML;
                 loadFeed(2, () => {
-                    window.secondFeed = document.querySelector('.entry-link').innerHTML;
+                   secondFeed = document.querySelector('.entry-link').innerHTML;
                     done();
                 });
             });
         });
-    });
-    it('loads new feeds', (done) => {
-
-        expect(window.secondFeed !== window.firstFeed).not.toBe(true);
-        done();
-    });
+        it('loads new feeds', (done) => {
+            expect(secondFeed !== firstFeed).toBe(true); done();
+        });
+    })
+    //     /* TODO: Write a test that ensures when a new feed is loaded
+    //    * by the loadFeed function that the content actually changes.
+    //    * Remember, loadFeed() is asynchronous.
+    //    */
 
 }());

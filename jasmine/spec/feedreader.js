@@ -37,7 +37,7 @@ $(function() {
             const url = el.url;
             it('url at index ' + index  + ' should be defined and not empty', function () {
                 expect(url).toBeDefined();
-                expect(url).not.toBe(0);
+                expect(url.length).not.toBe(0);
             });
         });
 
@@ -51,7 +51,7 @@ $(function() {
             const name = ele.name;
             it('name at index' + index + ' should be defined and not empty', function () {
                 expect(name).toBeDefined();
-                expect(name).not.toBe(0);
+                expect(name.length).not.toBe(0);
             });
         })
 
@@ -82,12 +82,12 @@ $(function() {
     //
     const menu = document.querySelector('.menu-hidden');
     menu.click();
-    it('visibility when icon is clicked', function () {
-        expect(menu).not.toBe();
+    it('visibility when icon is clicked',  function () {
+        expect(menu).not.toContain();
 
         menu.click();
         it('again it changes', function () {
-            expect(menu).toBe()
+            expect(menu).toContain()
         });
     });
 
@@ -107,7 +107,7 @@ $(function() {
             })
         });
         it('should be at least a single entry element within the .feed container', () => {
-            let feed = document.querySelector('.entry.feed');
+            let feed = document.querySelector('.feed.entry');
             expect(feed).not.toBe(0)
         });
     });

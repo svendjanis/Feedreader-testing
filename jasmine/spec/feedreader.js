@@ -68,9 +68,10 @@ $(function() {
     // */
 
     describe('the menu', function () {
-        const menu = document.querySelector('body').classList.contains('menu-hidden')
+        const menu = $('body').hasClass('menu-hidden');
+
         it('menu should be hidden by the default', function () {
-            expect(menu).not.toBe(null);
+            expect(menu).toBe(true);
         });
     });
 
@@ -80,14 +81,45 @@ $(function() {
      * clicked and does it hide when clicked again.
      */
     //
-    const menu = document.querySelector('body').classList.contains('menu-hidden')
-        $('menu-icon-link').click
-        it('visibility when icon is clicked',  function () {
-            expect(menu).not.toContain();
 
-          $('menu-icon-link').click
-            expect(menu).toContain()
-        });
+   describe('menu changes', function () {
+       const menu = $('body').hasClass('menu-hidden');
+       it('it should change ', function () {
+           //selectam body i provjerim ima li klasu
+           $('body').hasClass('menu-hidden');
+
+           //selectam hambuger icon i klik na njega
+           $('.menu-icon-link').click();
+           // ocekujem da nije true tj nema klasu menu
+           expect($('body').hasClass('menu-hidden')).not.toBe(true);
+
+           // ponovno selctam body i provjerim da ima klasu
+           $('body').hasClass('menu-hidden');
+
+           //selectam hambuger icon i klik na njega
+           $('.menu-icon-link').click();
+
+           //ocekujem da je treu tj da ima klasu
+           expect($('body').hasClass('menu-hidden')).toBe(true);
+
+
+       });
+   });
+
+
+    // describe('menu changes', function () {
+    //     const menu = document.querySelector('body').classList.contains('menu-hidden');
+    //     $('menu-icon-link').click();
+    //     menu;
+    //     it('visibility when icon is clicked',  function () {
+    //         expect(menu).not.toContain('.menu-hidden');
+    //
+    //         // menu;
+    //         $('menu-icon-link').click();
+    //     menu
+    //         expect(menu).toContain('.menu-hidden')
+    //     });
+    // });
 
 
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -106,8 +138,9 @@ $(function() {
             })
         });
         it('should be at least a single entry element within the .feed container', () => {
-            let feed = document.querySelector('.feed.entry');
-            expect(feed).toBeGreater(0)
+            let feed = document.querySelectorAll('.feed .entry');
+
+            expect(feed.length).toBeGreaterThan(0)
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
